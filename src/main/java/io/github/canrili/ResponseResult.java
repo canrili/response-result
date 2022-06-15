@@ -3,7 +3,7 @@ package io.github.canrili;
 import java.io.Serializable;
 
 /**
- * the response result for restful api
+ * a response result for the restful api
  *
  * @author ashley chao
  * @version 1.0
