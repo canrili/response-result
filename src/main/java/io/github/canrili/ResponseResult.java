@@ -3,10 +3,10 @@ package io.github.canrili;
 import java.io.Serializable;
 
 /**
+ * the response result for restful api
+ *
  * @author ashley chao
  * @version 1.0
- * @description the response result for restful api
- * @date 2022-06-14
  */
 public class ResponseResult<T> implements Serializable {
 
@@ -22,6 +22,7 @@ public class ResponseResult<T> implements Serializable {
 
   /**
    * create a response result with ResponseResult.CodeEnum and message and data
+   *
    * @param code the response code
    * @param message the response message
    * @param data the response data
@@ -34,10 +35,11 @@ public class ResponseResult<T> implements Serializable {
 
   /**
    * create a successful response result with message and data
-   * @param message
-   * @param data
-   * @return
-   * @param <T>
+   *
+   * @param message the response message
+   * @param data the response data
+   * @return the response result
+   * @param <T> the response data type
    */
   public static <T> ResponseResult<T> ok(String message, T data) {
     return new ResponseResult<>(CodeEnum.SUCCESS, message, data);
@@ -45,27 +47,53 @@ public class ResponseResult<T> implements Serializable {
 
   /**
    * create a success response result
-   * @return
-   * @param <T>
+   *
+   * @return the response result
+   * @param <T> the response data type
    */
   public static <T> ResponseResult<T> ok() {
     return ResponseResult.ok("success", null);
   }
 
-
+  /**
+   * create a failed response result with message
+   *
+   * @param message the response message
+   * @param data the response data
+   * @return the response result
+   * @param <T> the response data type
+   */
   public static <T> ResponseResult<T> error(String message, T data) {
     return new ResponseResult<>(CodeEnum.FAIL, message, data);
   }
 
+  /**
+   * create a failed response result
+   *
+   * @return the response result
+   * @param <T> the response data type
+   */
   public static <T> ResponseResult<T> error() {
     return ResponseResult.error("fail", null);
   }
 
+  /**
+   * set message of a response result
+   *
+   * @param message the response message
+   * @return the response result
+   */
   public ResponseResult<T> withMessage(String message) {
     this.message = message;
     return this;
   }
 
+  /**
+   * set data of a response result
+   *
+   * @param data the response data
+   * @return the response result
+   */
   public ResponseResult<T> withData(T data) {
     this.data = data;
     return this;
